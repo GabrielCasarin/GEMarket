@@ -1,0 +1,76 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Teste Valemobi</title>
+
+    <!-- Bootstrap -->
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+  </head>
+  <body>
+    <div class="wraper">
+      <div class="my-nav">
+        <div class="container">
+          <div class="navbar navbar-custom mnav">
+            <div class="container-fluid">
+              <div class="collapse navbar-collapse mnav">
+                <ul class="nav navbar-nav navbar-right mnav">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Sign Up</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="plataforma">
+        <div class="container">
+          <div class="panel panel-default" style="width: 250px;">
+            <div class="panel-heading">
+              <h3 class="panel-title">ABCW17 - Café</h3>
+            </div>
+            <div class="panel-body">
+              <div class="container-fluid">
+                <div class="row">
+                  <img src="{% static 'assets/images/coffee_icon.jpg' %}" alt="" class="img-responsive center-block">
+                </div>
+                <div class="row"><br></div>
+                <div class="row">
+                  <div class="panel-title"><strong>Preço:</strong> R$ 10,00</div>
+                </div>
+                <div class="collapse" id="vender">
+                  Oi
+                </div>
+                <div class="collapse" id="comprar">
+                  Tchau
+                </div>
+              </div>
+            </div>
+            <div class="panel-footer text-center">
+              <div class="row">
+                <div class="col-xs-6">
+                  <button type="button" data-toggle="collapse" data-target="#vender" class="btn btn-primary btn-block">Vender</button>
+                </div>
+                <div class="col-xs-6">
+                  <button type="button" data-toggle="collapse" data-target="#comprar" class="btn btn-primary btn-block">Comprar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>

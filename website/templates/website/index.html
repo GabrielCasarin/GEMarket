@@ -1,0 +1,116 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Teste Valemobi</title>
+
+    <!-- Bootstrap -->
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+  </head>
+  <body>
+    <div class="wraper">
+      <div id="propaganda">
+        <!-- Navbar -->
+        <div class="my-nav">
+          <div class="container">
+            <div class="navbar navbar-custom mnav">
+              <div class="container-fluid">
+                <div class="collapse navbar-collapse mnav">
+                  <ul class="nav navbar-nav navbar-right mnav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#cadastro">Cadastro</a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <span class="caret"></span></a>
+                      <ul id="logindul" class="dropdown-menu">
+                        <li>
+                          <!-- <div id="logindiv"> -->
+                            <form action="" class="form-signin">
+                              <!-- <h2 class="form-signin-heading"></h2> -->
+                              <label for="inputEmail" class="sr-only">Email address</label>
+                              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                              <label for="inputPassword" class="sr-only">Password</label>
+                              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                              <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+                            </form>
+                          <!-- </div> -->
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FIM Navbar -->
+        <div class="container">
+          <div class="row row-centered">
+            <div class="col-xs-1 texto-propaganda"></div>
+            <div class="col-xs-10 titulo-propaganda text-center">
+                <p style="color: #8e653b;font-size:38pt;font-weight:bold;text-shadow: 0 0 2px #8a6d3b;">GE-M Market</p>
+                <p style="color: #a26e35;font-size:18pt;font-weight:bold;text-shadow: 0 0 2px #8a6d3b;">A sua nova plataforma de Negociação de Mercadorias.</p>
+            </div>
+            <div class="col-xs-1 texto-propaganda">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cadastro       -->
+      <section class="cadastro" id="cadastro">
+          <div class="container">
+              <div class="row">
+                  <div style="text-align:center;" class="col-md-12">
+                      <div class="page-header">
+                          <h1>CADASTRO</h1></div>
+                  </div>
+              </div>
+              <div class="row cadastro">
+                  <form action="cadastromedico" method="POST" id="registration-form">{% csrf_token %}
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label>Nome</label>
+                              <input class="form-control" name="nome" data-validation="required" data-validation-error-msg="Campo obrigatório" id="nome" maxlength="45">
+                          </div>
+                          <div class="form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" name="email" data-validation="email" data-validation-error-msg="Você não forneceu um email correto." id="email" maxlength="45">
+                          </div>
+                          <div class="form-group">
+                            <label>Username</label>
+                            <input class="form-control" name="username" data-validation="length alphanumeric" data-validation-length="3-12" data-validation-error-msg="Usuário deve ter entre 3 e 12 caracteres" id="username" maxlength="12">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label>Senha</label>
+                              <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" data-validation="required" data-validation-error-msg="A senha é obrigatória">
+                          </div>
+                          <div class="form-group">
+                              <label>Confirme sua senha</label>
+                              <input class="form-control" type="password" name="password" data-validation="confirmation" id="password" data-validation-error-msg="Confirme corretamente a senha">
+                          </div>
+                          <button type="submit" class="btn standardbutton">
+                              <span class="glyphicon glyphicon-ok"></span> Cadastro
+                          </button>
+                      </div>
+                  </form>
+                </div>
+              </div>
+
+      </section>
+      <!-- FIM Cadastro -->
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>

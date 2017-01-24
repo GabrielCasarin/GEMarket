@@ -1,0 +1,48 @@
+body {
+  /*padding-top: 10px;*/
+  padding-bottom: 40px;
+  /*background-color: #eee;*/
+  /*background-image: url("../images/business-cash-coin-dark.jpeg");*/
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+/*Navbar*/
+.my-nav .navbar-custom.mnav {
+	margin-bottom: 0;
+	text-transform: uppercase;
+	background-color: rgb(255, 255, 255, 0);
+}
+.my-nav .navbar-custom.mnav .nav.mnav li a:hover {
+	outline: 0;
+	/*color: rgba(0, 0, 0, .8);*/
+	background-color: transparent;
+}
+.my-nav .navbar-custom.mnav .nav li a:focus, .my-nav .navbar-custom.mnav .nav.mnav li a:active {
+	outline: 0;
+	background-color: transparent;
+}
+.my-nav .navbar-custom.mnav a {
+	color: #8a6d3b;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+}
+
+/*Propaganda*/
+#propaganda {
+  background-image: url("../images/business-cash-coin-degrade.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  box-shadow: 0 0 12px 2px black;
+}
+
+#logindul {
+   min-width: 250px;
+   padding: 14px;
+   overflow: hidden;
+   background-color: rgba(255,255,255,.5);
+   border-radius: 10px;
+}

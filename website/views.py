@@ -10,6 +10,15 @@ def index(request):
     return render(request, 'website/index.html')
 
 def cadastro(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    nome = request.POST['nome']
+    email = request.POST['email']
+
+    u = auth.models.User.objects.create_user(username=username, email=email, password=password)
+    u.first_name = nome
+    u.save()
+
     return HttpResponseRedirect('/')
 
 def login(request):

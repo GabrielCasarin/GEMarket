@@ -1,4 +1,6 @@
 import sys
+from datetime import datetime
+# Render
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 # Auth
@@ -6,7 +8,7 @@ import django.contrib.auth as auth
 # Models
 from .models import *
 
-# Create your views here.
+
 def index(request):
     return render(request, 'website/index.html')
 
@@ -49,10 +51,25 @@ def logout_view(request):
 
 
 def vender(request):
-    print(request.POST)
+    if request.user.is_authenticated():
+        mercadoria = Mercadoria.objects.get(codigo=request.POST['codigo'])
+        if mercadoria is not None:
+            nova_venda = Venda(mercadoria=mercadoria,
+                                    quantidade=int(request.POST['qtdeVendaInput']),
+                                    precoVenda=float(request.POST['precoVendaInput']),
+                                    usuario=request.user)
+            nova_venda.save()
     return HttpResponseRedirect('/home')
 
 
 def comprar(request):
-
+    print(request.POST)
+    if request.user.is_authenticated():
+        mercadoria = Mercadoria.objects.get(codigo=request.POST['codigo'])
+        if mercadoria is not None:
+            nova_compra = Compra(mercadoria=mercadoria,
+                                    quantidade=int(request.POST['qtdeCompraInput']),
+                                    precoCompra=mercadoria.preco,
+                                    usuario=request.user)
+            nova_compra.save()
     return HttpResponseRedirect('/home')

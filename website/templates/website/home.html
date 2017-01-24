@@ -15,6 +15,7 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
   </head>
+
   <body>
     <div class="wraper">
       <div class="my-nav">
@@ -36,25 +37,29 @@
         </div>
       </div>
       <section class="plataforma">
-        <!-- Mercadoria -->
+        <!-- Mercadorias -->
+        {% for mercadoria in mercadorias %}
         <div class="container">
-          <div class="panel panel-default" style="width: 300px;">
+          <div class="panel panel-default center-block" style="width: 300px; margin-left: auto; margin-right: auto;">
             <div class="panel-heading">
-              <h3 class="panel-title">ABCW17 - Café</h3>
+              <h3 class="panel-title">{{ mercadoria.codigo }} - {{ mercadoria.nome }}</h3>
             </div>
             <div class="panel-body">
               <div class="container-fluid">
                 <div class="row">
-                  <img src="{% static 'assets/images/coffee_icon.jpeg' %}" alt="" class="img-responsive center-block">
+                  {% with "assets/images/"|add:mercadoria.img_name|add:".jpeg" as image_name %}
+                  <img src="{% static image_name %}" alt="" class="img-responsive center-block">
+                  {% endwith %}
                 </div>
                 <div class="row"><br></div>
                 <div class="row">
-                  <div class="panel-title"><strong>Preço:</strong> R$ 10,00</div>
+                  <div class="panel-title"><strong>Preço:</strong> R$ {{ mercadoria.preco | floatformat:2 }}</div>
                 </div>
                 <!-- Formulário de Venda -->
                 <div class="collapse" id="vender">
                   <hr>
                   <form action="vender" method="post" class="form-horizontal"> {% csrf_token %}
+                    <input type="hidden" name="codigo" value="{{ mercadoria.codigo }}">
                     <div class="form-group">
                       <label for="precoVendaInput" class="col-xs-4 col-xs-offset-1 control-label">Vender a</label>
                       <div class="col-xs-7 input-group">
@@ -106,7 +111,8 @@
             </div>
           </div>
         </div>
-        <!-- Fim Mercadoria -->
+        {% endfor %}
+        <!-- Fim Mercadorias -->
       </section>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

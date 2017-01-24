@@ -10,6 +10,7 @@ from .models import *
 def index(request):
     return render(request, 'website/index.html')
 
+
 def cadastro(request):
     username = request.POST['username']
     password = request.POST['password']
@@ -22,6 +23,7 @@ def cadastro(request):
 
     return HttpResponseRedirect('/')
 
+
 def login(request):
     if request.method == "POST":
         username = request.POST['inputUsername']
@@ -33,12 +35,24 @@ def login(request):
                 return HttpResponseRedirect('home')
     return render(request, 'website/index.html')
 
+
 def home(request):
     if request.user.is_authenticated():
-        return render(request, 'website/home.html')
-
+        mercadorias = Mercadoria.objects.all()
+        return render(request, 'website/home.html', {'mercadorias': mercadorias})
     return HttpResponseRedirect('/')
+
 
 def logout_view(request):
     auth.logout(request)
     return HttpResponseRedirect('/')
+
+
+def vender(request):
+    print(request.POST)
+    return HttpResponseRedirect('/home')
+
+
+def comprar(request):
+
+    return HttpResponseRedirect('/home')

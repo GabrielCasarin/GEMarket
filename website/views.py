@@ -23,13 +23,17 @@ def cadastro(request):
 
 def login(request):
     if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST['inputUsername']
+        password = request.POST['inputPassword']
         user = auth.authenticate(username=username, password=password)
-        if user.is_active:
-            auth.login(request, user)
-            return HttpResponseRedirect('home')
+        if user is not None:
+            if user.is_active:
+                auth.login(request, user)
+                return HttpResponseRedirect('home')
     return render(request, 'website/index.html')
 
 def home(request):
-    return render(request, 'website/home.html')
+    if request.user.is_authenticated():
+        return render(request, 'website/home.html')
+
+    return HttpResponseRedirect('/')

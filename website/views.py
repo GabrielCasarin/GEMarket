@@ -1,3 +1,4 @@
+import sys
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 # Auth
@@ -36,4 +37,8 @@ def home(request):
     if request.user.is_authenticated():
         return render(request, 'website/home.html')
 
+    return HttpResponseRedirect('/')
+
+def logout_view(request):
+    auth.logout(request)
     return HttpResponseRedirect('/')

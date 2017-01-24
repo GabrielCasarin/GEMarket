@@ -6,6 +6,7 @@ class Mercadoria(models.Model):
     codigo = models.CharField(max_length=10)
     preco = models.FloatField()
     tipo = models.CharField(max_length=45)
+    img_name = models.CharField(max_length=45)
 
 
 class Operacao(models.Model):

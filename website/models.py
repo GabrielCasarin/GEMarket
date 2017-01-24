@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Mercadoria(models.Model):
@@ -13,6 +14,7 @@ class Operacao(models.Model):
     mercadoria = models.ForeignKey(Mercadoria, on_delete=models.CASCADE)
     datahora = models.DateTimeField(auto_now=True)
     quantidade = models.PositiveIntegerField()
+    usuario = models.ForeignKey(User, default=None)
 
 
 class Compra(Operacao):

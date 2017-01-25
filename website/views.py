@@ -63,7 +63,6 @@ def vender(request):
 
 
 def comprar(request):
-    print(request.POST)
     if request.user.is_authenticated():
         mercadoria = Mercadoria.objects.get(codigo=request.POST['codigo'])
         if mercadoria is not None:
@@ -73,3 +72,22 @@ def comprar(request):
                                     usuario=request.user)
             nova_compra.save()
     return HttpResponseRedirect('/home')
+
+
+def historico(request):
+    compras = Compra.objects.all()
+    vendas = Venda.objects.all()
+    total = list(compras) + list(vendas)
+    total = sorted(total, key=lambda d: d.datahora, reverse=True)
+    # total = total.order_by('-datahora')
+    # operacoes = Operacao.objects.all().order_by('datahora')
+    # l = []
+    # for o in operacoes:
+    #     try:
+    #         if hasattr('compra', o):
+    #             l.append(o.compra)
+    #         else:
+    #             l.append(o.venda)
+    #     except Exception as e:
+    #         pass
+    return render(request, 'website/historico.html', {'operacoes': total})

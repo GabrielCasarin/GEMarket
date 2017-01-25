@@ -10,4 +10,5 @@ urlpatterns = [
 	url(r'^logout$', views.logout_view),
 	url(r'^vender$', views.vender),
 	url(r'^comprar$', views.comprar),
+	url(r'^historico$', views.historico),
 ]
